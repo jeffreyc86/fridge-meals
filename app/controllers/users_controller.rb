@@ -19,6 +19,22 @@ class UsersController < ApplicationController
             end
     end
 
+    #edit/update method to update account info, delete account
+
+    def login
+    end
+
+    def handle_login
+        @user = User.find_by(username: params[:username])
+            if @user && @user.authenticate(params[:password])
+                session[:user_id] = @user.id
+                redirect_to user_path(@user)
+            else
+                flash[:error] = "Wrong Username or Password"
+                redirect_to login_path
+            end
+    end
+
 
     private
     def user_params
