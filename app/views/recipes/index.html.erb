@@ -1,0 +1,13 @@
+<h1>Recipes</h1>
+
+<%# sort by dish type %>
+<%# sort by difficulty level %>
+<%# sort by dish type %>
+
+<%= form_tag results_path, method: :get do %>
+    <%= label_tag "Difficulty Level" %>
+    <%= select_tag :difficulty, options_for_select(@difficulties) %>
+    <%= label_tag "Vegetarian" %>
+    <%= select_tag :vegetarian, options_for_select(["Yes": true, "No": false]) %>
+    <%= label_tag "Cook Time" %>
+    <%= select_tag :time, options_for_select(["Under 30 Minutes": 30, "30 Minutes to 1 Hour": 31..60, "1-2 Hours": 61..120, "2 Hours or More": 121]) %>

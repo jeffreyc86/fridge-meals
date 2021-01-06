@@ -10,7 +10,7 @@ Recipe.destroy_all
 Ingredient.destroy_all
 User.destroy_all
 
-res = RestClient.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=500", headers={
+res = RestClient.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=10", headers={
     "x-rapidapi-host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
     "x-rapidapi-key" => ENV['API']
 })
@@ -60,9 +60,9 @@ puts "Creating Humans 👨‍👨‍👧‍👦"
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Games::Pokemon.unique.name, password: Faker::Games::Pokemon.name)
 end 
 
-20.times do 
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Games::Fallout.unique.character, password: Faker::Games::Pokemon.name)
-end 
+# 20.times do 
+#   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Games::Fallout.unique.character, password: Faker::Games::Pokemon.name)
+# end 
 
-puts "Create Favorites"
+# puts "Create Favorites"
 

@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
 
     def index 
         @recipes = Recipe.all
+        @difficulties = Recipe.all.map { |recipe| recipe.difficulty }.uniq
     end
 
     def show
@@ -20,6 +21,9 @@ class RecipesController < ApplicationController
                 flash[:errors] = @recipe.errors.full_messages
                 redirect_to new_recipe_path
         end
+    end
+
+    def results
     end
 
     private

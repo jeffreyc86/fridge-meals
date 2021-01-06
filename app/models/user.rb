@@ -19,4 +19,21 @@ class User < ApplicationRecord
         "#{first_name} #{last_name}"
     end
     
+    def rec_m_ing
+        ui_arr = user_ingredients.map { |ui| ui.ingredient_id }
+        Recipe.all.map do |recipe|
+            {recipe.id => (recipe.recipe_ingredients.map { |ri| ri.ingredient_id } - ui_arr).count}
+        end.inject(:merge)
+    end
+
+    #iterate through Recipes to get seperate arrays of recipeingredients
+        #match each array of recipeingredients less array of useringredients
+        #array of missing recipeingredients, which we can count 
+    #array of missing recipeingredients
+    # def few_ing_needed #1-4 ing needed
+    # end
+
+    # def many_ing_needed #5+ ing needed
+    # end
+
 end

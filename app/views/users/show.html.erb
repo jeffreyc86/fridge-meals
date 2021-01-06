@@ -1,11 +1,56 @@
-Welcome <%= @user.first_name %>
+<h1>Welcome <%= @user.first_name %></h1>
 
 <%# click button which leads to page to select items in your fridge, input the amount, drop down for the unit %>
-
+<h2>Your Current Ingredients</h2>
+<ul>
+<% @user.user_ingredients.each do |ing| %>
+    <%= image_tag(ing.ingredient.image, :alt => ing.ingredient.name) %>
+    <%= "#{ing.amt} #{ing.unit} of #{ing.ingredient.name}" %>
+<% end %>
+</ul>
 <%# Search for recipes based off of your useringredients %>
+<h2>Recipe Suggestions Based Off of YOUR Ingredients</h2>
+<h4>Make These Right Away</h4>
+    <% if @user.rec_m_ing.select {|k,v| v == 0 }.count == 0 %>
+        <%= "Sorry you'll need to do some shopping." %>
+    <% else %>
+        <ul>
+        <% @user.rec_m_ing.select {|k,v| v == 0 }.each do |k,v| %>
+            <%= image_tag(Recipe.find(k).image_url, :alt => Recipe.find(k).name) %>
+            <%= link_to Recipe.find(k).name, recipe_path(k) %>
+        <% end %>
+        </ul>
+    <% end %>
 
+<h4>1-5 Ingredients Away</h4>
+    <% if @user.rec_m_ing.select {|k,v| v.between?(1, 5) }.count == 0 %>
+         <%= "Looks like you need some more ingredients." %>
+    <% else %>
+         <ul>
+        <% @user.rec_m_ing.select {|k,v| v.between?(1, 5) }.to_a.sample(5).to_h.each do |k,v| %>
+            <%= image_tag(Recipe.find(k).image_url, :alt => Recipe.find(k).name) %><br>
+            <%= link_to Recipe.find(k).name, recipe_path(k) %><br>
+            <%= "Number of Missing Ingredients: #{v}" %><br>
+        <% end %>
+        </ul>
+    <% end %>
+
+<h4>Lots of Shopping Needed</h4>
+    <ul>
+    <% @user.rec_m_ing.select {|k,v| v > 5 }.to_a.sample(5).to_h.each do |k,v| %>
+        <%= image_tag(Recipe.find(k).image_url, :alt => Recipe.find(k).name) %><br>
+        <%= link_to Recipe.find(k).name, recipe_path(k) %><br>
+        <%= "Number of Missing Ingredients: #{v}" %><br>
+    <% end %>
+    </ul>
 <%# search for recipes in general %>
 
 <%# create new recipe%>
 
 <%# favorite recipes %>
+<h2>Your Favorites</h2>
+<ol>
+<% @user.favorites.each do |favorite| %>
+    <li><%= link_to favorite.recipe.name, recipe_path(favorite.recipe) %></li>
+<% end %>
+</ol>

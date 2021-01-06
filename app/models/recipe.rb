@@ -7,7 +7,11 @@ class Recipe < ApplicationRecord
     has_many :favorite_users, through: :favorites, foreign_key: :user_id
 
     def author
-        self.user.full_name
+        if self.user
+            self.user.full_name
+        else
+            "Anonymous"
+        end
     end
 
     def is_vegetarian

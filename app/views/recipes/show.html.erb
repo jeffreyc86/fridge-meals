@@ -1,9 +1,5 @@
 <h1><%= @recipe.name %></h1>
 
-<% if !@recipe.author %>
-    <% @recipe.author = "Anonymous" %>
-<% end %>
-
 <h2>Author: <%= @recipe.author %></h2>
 
 <%= image_tag(@recipe.image_url, :alt => @recipe.name) %>
@@ -12,30 +8,32 @@
 <h4>Difficulty Level: <%= @recipe.difficulty %></h4>
 <h5>Time to Make: <%= @recipe.time %> Minutes</h5>
 <h5>Servings: <%= @recipe.servings %></h5>
-Vegetarian: <%= @recipe.is_vegetarian %>
+<h5>Vegetarian: <%= @recipe.is_vegetarian %></h5>
 
-<p><%= @recipe.summary %></p>
+<p><%= sanitize @recipe.summary %></p>
 
 <h2>Ingredients:</h2>
 <ol>
     <% @recipe.recipe_ingredients.each do |ing| %>
-        <li><%= "#{ing.amount} #{ing.unit} of #{ing.ingredient.name}" %></li>
+        <li><%= "#{ing.amt} #{ing.unit} of #{ing.ingredient.name}" %></li>
     <% end %>
 </ol>
 
 Directions:
-<%= @recipe.instructions %>
+<%= sanitize @recipe.instructions %>
 
-<% if Favorite.find_by(user_id: @current_user.id, recipe_id: @recipe.id) %>
+
+<p><% if Favorite.find_by(user_id: @current_user.id, recipe_id: @recipe.id) %>
     <% fav = Favorite.find_by(user_id: @current_user.id, recipe_id: @recipe.id) %>
     <%= form_tag favorite_path(fav), method: :delete do %>
         <%= hidden_field_tag :id, fav.id %>
-        <%= hidden_field_tag :recipe, @recipe %>
+        <%= hidden_field_tag :recipe, @recipe.id %>
         <%= submit_tag "Remove From Favorites" %>
     <% end %>
 <% else %>
-    <% form_tag favorites_path do %>
+    <%= form_tag favorites_path do %>
         <%= hidden_field_tag :recipe_id, @recipe.id %>
         <%= submit_tag "Add to Favorites" %>
     <% end %>
 <% end %>
+</p>
