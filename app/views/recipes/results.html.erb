@@ -1,0 +1,16 @@
+<h1>Recipe Results</h1>
+
+<% if @recipes.count == 0 %>
+    <%= "Sorry there are no recipes with your preferences." %><br>
+    <p><%= button_to "Search Again", recipes_path, method: :get %></p>
+<% else %>
+<ul>
+<% @recipes.each do |recipe| %>
+    <p><%= image_tag(recipe.image_url, :alt => recipe.name) %><br>
+    <%= link_to recipe.name, recipe_path(recipe) %><br>
+    <%= "Missing Ingredients: #{@current_user.missing_ing(recipe)}" %><br>
+    <%= "Time to Cook: #{recipe.time} minutes" %></p>
+<% end %><br>
+    <%= button_to "Search Again", recipes_path, method: :get %>
+</ul>
+<% end %>

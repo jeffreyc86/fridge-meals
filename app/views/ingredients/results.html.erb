@@ -1,0 +1,17 @@
+<h1>Ingredient Search Results</h1>
+
+<% if @ingredients.count == 0 %>
+    <%= "Sorry there are no ingredients by that name." %>
+    <p><%= form_tag ing_results_path, method: :get do %>
+        <%= label_tag "Ingredient Name:" %>
+        <%= text_field_tag :answer %>
+        <%= submit_tag "Search Again" %>
+    <% end %></p>
+<% else %>
+    <ul>
+    <% @ingredients.each do |ing| %>
+        <p><%= image_tag(ing.image, :alt => ing.name) %>
+        <%= link_to ing.name, ingredient_path(ing) %></p>
+    <% end %>
+    </ul>
+<% end %>

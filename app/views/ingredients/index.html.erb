@@ -1,0 +1,16 @@
+<h1>Ingredients</h1>
+
+<h2>Search By Name</h2>
+<%= form_tag ing_results_path, method: :get do %>
+    <%= label_tag "Ingredient Name" %>
+    <%= text_field_tag :answer %>
+    <%= submit_tag "Search" %>
+<% end %>
+
+<h2>All Ingredients</h2>
+     <ul>
+    <% @ingredients.sort_by(&:name).each do |ing| %>
+        <p><%= image_tag(ing.image, :alt => ing.name) %>
+        <%= link_to ing.name, ingredient_path(ing) %></p>
+    <% end %>
+    </ul>

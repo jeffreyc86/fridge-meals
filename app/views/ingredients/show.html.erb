@@ -1,0 +1,15 @@
+<h1><%= @ingredient.name %></h1>
+
+<%= image_tag(@ingredient.image, :alt => @ingredient.name) %>
+
+<h3><%= "Add #{@ingredient.name} to your fridge" %></h3>
+<%= form_tag user_ingredients_path do %>
+    <%= hidden_field_tag :user_id, @current_user.id %>
+    <%= hidden_field_tag :ingredient_id, @ingredient.id %>
+    <%= label_tag "Amount" %>
+    <%= number_field_tag :amount, nil, min: 0.01, step: 0.01 %>
+    <%= label_tag "Unit of Measurement" %>
+    <%= select_tag :unit, options_for_select(@units) %>
+    <%= submit_tag "Add Ingredient" %>
+<% end %>
+

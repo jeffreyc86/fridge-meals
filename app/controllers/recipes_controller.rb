@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
 
     def index 
         @recipes = Recipe.all
-        @difficulties = Recipe.all.map { |recipe| recipe.difficulty }.uniq
+        @dish_types = Recipe.all.map { |recipe| recipe.dish_type }.uniq
     end
 
     def show
@@ -24,6 +24,27 @@ class RecipesController < ApplicationController
     end
 
     def results
+        @recipes = Recipe.all
+
+        if params[:difficulty] != ""
+            @recipes = @recipes.select { |recipe| recipe.difficulty == params[:difficulty]}
+        end 
+
+        if params[:vegetarian] != ""
+            @recipes = @recipes.select { |recipe| recipe.vegetarian == params[:vegetarian]}
+        end 
+
+        if params[:dish_type] != ""
+            @recipes = @recipes.select { |recipe| recipe.dish_type == params[:dish_type]}
+        end 
+
+        if params[:time] != ""
+            num = params[:time].split("..").map{ |num| num.to_i }
+            @recipes = @recipes.select { |recipe| recipe.time.between?(num[0],num[1])}
+        end
+
+        @recipes
+      
     end
 
     private

@@ -7,4 +7,8 @@ class UserIngredient < ApplicationRecord
         '%.2f' % self.amount
     end
 
+    def ing_name
+        ingredient.name
+    end
+
 end

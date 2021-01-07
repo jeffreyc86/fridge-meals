@@ -3,11 +3,12 @@
 <%# click button which leads to page to select items in your fridge, input the amount, drop down for the unit %>
 <h2>Your Current Ingredients</h2>
 <ul>
-<% @user.user_ingredients.each do |ing| %>
+<% @user.user_ingredients.sort_by(&:ing_name).each do |ing| %>
     <%= image_tag(ing.ingredient.image, :alt => ing.ingredient.name) %>
-    <%= "#{ing.amt} #{ing.unit} of #{ing.ingredient.name}" %>
+    <%= "#{ing.amt} #{ing.unit} of #{ing.ingredient.name}" %><br>
 <% end %>
 </ul>
+<%= button_to "Add Ingredients to Your Fridge", ingredients_path, method: :get %>
 <%# Search for recipes based off of your useringredients %>
 <h2>Recipe Suggestions Based Off of YOUR Ingredients</h2>
 <h4>Make These Right Away</h4>
@@ -30,7 +31,7 @@
         <% @user.rec_m_ing.select {|k,v| v.between?(1, 5) }.to_a.sample(5).to_h.each do |k,v| %>
             <%= image_tag(Recipe.find(k).image_url, :alt => Recipe.find(k).name) %><br>
             <%= link_to Recipe.find(k).name, recipe_path(k) %><br>
-            <%= "Number of Missing Ingredients: #{v}" %><br>
+            <%= "Missing Ingredients: #{v}" %><br>
         <% end %>
         </ul>
     <% end %>
@@ -40,10 +41,10 @@
     <% @user.rec_m_ing.select {|k,v| v > 5 }.to_a.sample(5).to_h.each do |k,v| %>
         <%= image_tag(Recipe.find(k).image_url, :alt => Recipe.find(k).name) %><br>
         <%= link_to Recipe.find(k).name, recipe_path(k) %><br>
-        <%= "Number of Missing Ingredients: #{v}" %><br>
+        <%= "Missing Ingredients: #{v}" %><br>
     <% end %>
     </ul>
-<%# search for recipes in general %>
+
 
 <%# create new recipe%>
 
