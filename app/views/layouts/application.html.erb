@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mod2Project</title>
+    <title>Fridge Meals</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
     <%# javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+    <body>
+    
+    <nav>
+      <ul>
+        <li class="nav-tabs"><%= link_to "Fridge Meals", home_path %></li>
+
+
+        <% if @current_user %>
+          <li class="nav-tabs"><%= link_to "Find Recipes", recipes_path %></li>
+          <li class="nav-tabs right"><%= link_to "Logout", {:controller => :sessions, :action => 'destroy'} %></li>
+          <li class="nav-tabs right"><%= link_to "Account Settings", edit_user_path(@current_user) %></li>
+          <li class="nav-tabs right"><%= link_to "Your Page", user_path(@current_user) %></li>
+          
+
+        <% else %>
+          <li class="nav-tabs right"><%= link_to "Sign Up", new_user_path %></li>
+          <li class="nav-tabs right"><%= link_to "Login", login_path %></li>
+        <% end %>
+
+      </ul>
+    </nav>
+
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>

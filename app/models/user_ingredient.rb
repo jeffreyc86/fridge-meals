@@ -11,4 +11,5 @@ class UserIngredient < ApplicationRecord
         ingredient.name
     end
 
+
 end

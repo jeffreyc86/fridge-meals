@@ -13,3 +13,138 @@
  *= require_tree .
  *= require_self
  */
+
+ body{
+    font-family: 'Roboto Slab', serif;
+  }
+
+ .login{
+    text-align: center;
+    font-size: 20px;
+ }
+
+ .gif-wrapper {
+    background-image: url(ratatouille.gif);
+    text-align: center;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+.landing-title{
+    color: #0C5744;
+    font-size: 40px;
+    margin: center;
+    text-align: center;
+    font-family: 'Alfa Slab One', cursive;
+}
+
+
+ nav {
+    width: 100%;
+    font-family: 'Alfa Slab One', cursive;
+    /* border: 1px solid white; */
+  }
+  
+  nav ul {
+    /* border: 1px solid white; */
+    
+    
+    /* height: 40px; */
+    /* line-height: 40px; */
+    /* position: fixed; */
+    top: 0;
+    width: 100%;
+    position: relative;
+    left: -30px;
+
+  }
+  
+  
+  nav ul li {
+    /* border: 1px solid white; */
+    font-size: 0px;
+    display: inline-block;
+  }
+
+
+  nav ul li a {
+    text-decoration: none;
+    font-size: 30px;
+    position: left;
+  }
+
+  
+  
+a:visited{
+    color:#0C5744;
+  }
+  
+  nav ul li a:hover {
+    color: #0C5744;
+    transition: 1s;
+  }
+
+
+  .nav-tabs {
+    padding: 0px 20px;
+    line-height: 70px;
+    position: relative;
+    bottom: 10px;
+  }
+
+  .right {
+    float: right;
+    text-align: right;
+    font-size: 20px;
+    margin-right :15px;
+  }
+
+
+
+  h2 {
+    font-weight: 9000;
+    color: #0C5744;
+  }
+
+  h3 {
+    font-family: 'Alfa Slab One', cursive;
+    color: #0C5744;
+    font-size: 25px;
+
+  }
+
+  h4{
+    font-family: 'Alfa Slab One', cursive;
+    font-weight: 9000;
+    color: #0C5744;
+  }
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 3; }
+    .div3 { grid-area: 2 / 1 / 12 / 3; }
+    
+.ing{
+    height: 20px;
+    width: auto;
+}
+
+.rec{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+}
+
+.rec img {
+    height: 200px;
+}
+
+

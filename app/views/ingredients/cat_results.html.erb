@@ -1,0 +1,8 @@
+<h1><%= "Ingredients within #{@category} Category" %></h1>
+
+    <ul>
+    <% @ingredients.each do |ing| %>
+        <p><%= image_tag(ing.image, :alt => ing.name) %>
+        <%= link_to ing.name, ingredient_path(ing) %></p>
+    <% end %>
+    </ul>

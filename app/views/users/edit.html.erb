@@ -1,9 +1,7 @@
-<% if @current_user %>
-    <h1><%= "You're already logged in #{@current_user.first_name}" %></h1>
-        <p><%= button_to "Return to Your Page", user_path(@current_user), method: :get %></p>
-<% else %>
+<div style="text-align: center;">
+    <%= image_tag("change.gif", :alt => "rss feed") %>
+<h1>Edit Your Account Information</h1>
 
-<h1>Please Sign Up for Fridge Meals to Start Finding Recipes</h1>
 
 <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
@@ -20,13 +18,16 @@
     <p><%= f.text_field :username  %></p>
     <p><%= f.label :password  %></p>
     <p><%= f.password_field :password  %></p>
-    <p><%= f.label :password_confirmation  %></p>
+    <p><%= f.label "Confirm Password"  %></p>
     <p><%= f.password_field :password_confirmation  %></p>
 
-<p><%=f.submit "Create user" %></p>
+<p><%=f.submit "Update Information" %></p>
 <% end%>
+</div>
 
-<h3>Already Signed Up?</h3>
-<%= button_to "Login Here", login_path, method: :get %>
-
-<% end %>
+<div style="text-align: center;">
+    
+<h2>Delete Account</h2>
+<%= image_tag("delete.gif", :alt => "rss feed") %>
+<%= button_to "Permanently Delete Account", user_path(@user), method: :delete, confirm: "Are you sure you want to delete your account?"%>
+</div>

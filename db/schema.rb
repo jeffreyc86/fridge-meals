@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_170844) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
+    t.string "category"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,7 +37,6 @@ ActiveRecord::Schema.define(version: 2021_01_05_170844) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name"
     t.string "image_url"
     t.boolean "vegetarian"

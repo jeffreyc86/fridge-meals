@@ -1,7 +1,7 @@
-<h1>Recipes</h1>
+<div style="text-align:center;"><h1>Recipes</h1>
 
 <h3>Search for a Recipe</h3>
-
+<%= image_tag("rec-search.gif", :alt => "search") %>
 <%= form_tag results_path, method: :get do %>
     <%= label_tag "Difficulty Level" %>
     <%= select_tag :difficulty, options_for_select("": "", "Easy": "Easy", "Medium": "Medium", "Hard": "Hard") %>
@@ -14,11 +14,13 @@
     <%= submit_tag "Search" %>
 <% end %>
 
-<h3>Randomly Select Recipes</h3>
+<h3>Randomly Selected Recipes</h3>
 
 <% @recipes.sample(10).each do |recipe| %>
     <p><%= image_tag(recipe.image_url, :alt => recipe.name) %><br>
     <%= link_to recipe.name, recipe_path(recipe) %><br>
     <%= "Missing Ingredients: #{@current_user.missing_ing(recipe)}" %><br>
+    <%= "Dish Type: #{recipe.dish_type}" %><br>
     <%= "Time to Cook: #{recipe.time} minutes" %></p>
 <% end %><br>
+</div>

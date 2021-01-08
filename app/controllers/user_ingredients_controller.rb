@@ -5,5 +5,12 @@ class UserIngredientsController < ApplicationController
         redirect_to user_path(@current_user)
     end
 
+    def destroy
+        @user_ingredient = UserIngredient.find(params[:id])
+        @user_ingredient.destroy
+        redirect_to user_path(@current_user)
+    end
+
+
 end
 

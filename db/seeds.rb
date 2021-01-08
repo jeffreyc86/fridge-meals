@@ -38,11 +38,12 @@ recipe_hash["recipes"].each do |recipe|
     )
 
         recipe["extendedIngredients"].each do |ingredient|
-            if Ingredient.find_by(name: ingredient["name"])
-                ing = Ingredient.find_by(name: ingredient["name"])
+            if Ingredient.find_by(image: "https://spoonacular.com/cdn/ingredients_100x100/#{ingredient["image"]}")
+                ing = Ingredient.find_by(image: "https://spoonacular.com/cdn/ingredients_100x100/#{ingredient["image"]}")
             else
                 ing = Ingredient.create(
                 name: ingredient["name"],
+                category: ingredient["aisle"],
                 image: "https://spoonacular.com/cdn/ingredients_100x100/#{ingredient["image"]}"
             )
             end
@@ -58,9 +59,14 @@ end
 
 puts "Creating Humans 👨‍👨‍👧‍👦"
 10.times do 
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Games::Pokemon.unique.name, password: Faker::Games::Pokemon.name)
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Games::Pokemon.name, password: Faker::Games::Pokemon.name)
 end 
 
+
+puts "Creating Favorites"
+  50.times do
+    Favorite.create(user: User.all.sample, recipe: Recipe.all.sample)
+  end
 
 
 

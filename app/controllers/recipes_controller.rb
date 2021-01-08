@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
 
     def index 
         @recipes = Recipe.all
-        @dish_types = Recipe.all.map { |recipe| recipe.dish_type }.uniq
+        @dish_types = Recipe.all.map { |recipe| recipe.dish_type }.uniq.sort
     end
 
     def show

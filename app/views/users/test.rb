@@ -492,3 +492,11 @@
     },
 
 
+30.times do
+    UserIngredient.create(
+        user: User.all.sample, 
+        ingredient: Ingredient.all.sample,
+        amount: '%.2f' % rand(0.10..10.00),
+        unit: RecipeIngredient.all.map { |x| x.unit }.sample
+        )
+end
