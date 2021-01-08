@@ -1,7 +1,8 @@
-<div style="text-align:center;"><h1>Recipes</h1>
+<div style="text-align:center;"><h1 style="font-size: 40px;">Recipes</h1>
 
 <h3>Search for a Recipe</h3>
 <%= image_tag("rec-search.gif", :alt => "search") %>
+<p>
 <%= form_tag results_path, method: :get do %>
     <%= label_tag "Difficulty Level" %>
     <%= select_tag :difficulty, options_for_select("": "", "Easy": "Easy", "Medium": "Medium", "Hard": "Hard") %>
@@ -13,6 +14,7 @@
     <%= select_tag :time, options_for_select("": "", "Under 30 Minutes": 0..30, "30 Minutes to 1 Hour": 31..60, "1-2 Hours": 61..120, "2 Hours or More": 121..1000000) %>
     <%= submit_tag "Search" %>
 <% end %>
+</p>
 
 <h3>Randomly Selected Recipes</h3>
 

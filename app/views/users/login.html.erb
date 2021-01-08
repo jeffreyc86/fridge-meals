@@ -2,13 +2,14 @@
 
 <h1>Enter Your Credentials</h1>
 
-<%= image_tag("login.gif", :alt => "rss feed") %>
+
 
 <% if flash[:error] %>
-    <p style="color:red;"><%= flash[:error] %></p>
+    <p style="color:red; font-family: 'Alfa Slab One', cursive;"><%= flash[:error] %></p>
+    
 <% end %>
 
-
+<%= image_tag("login.gif", :alt => "rss feed") %>
 <%= form_tag login_path do %>
     <%= label_tag :username %>
     <%= text_field_tag :username %><br>

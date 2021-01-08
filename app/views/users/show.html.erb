@@ -1,6 +1,9 @@
 <% if @current_user != @user %>
+    <div style="text-align:center;">
     <h1>Sorry You Can't View Another User's Page</h1>
+    <%= image_tag("nah.gif", :alt => "rss feed") %>
      <p><%= button_to "Return to Your Page", user_path(@current_user), method: :get %></p>
+    </div>
 <% else %>
 <div style="text-align: center;">
     <%= image_tag("welcome.gif", :alt => "rss feed") %>
@@ -14,7 +17,7 @@
         <ul>
             <% @user.user_ingredients.sort_by(&:ing_name).each do |ing| %>
             <%= image_tag(ing.ingredient.image, :alt => ing.ingredient.name) %>
-                <%= "#{ing.amt} #{ing.unit} of #{ing.ingredient.name}" %><br>
+                <%= "#{ing.amt} #{ing.unit} of #{ing.ingredient.name}" %>
                 <%= button_to "Remove Ingredient", user_ingredient_path(ing.id), method: :delete %>
             <% end %>
         </ul>

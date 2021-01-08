@@ -1,23 +1,26 @@
-<h1><%= @recipe.name %></h1>
+<div style="text-align:center;">
+    <h1 style="font-weight: 9000; font-size: 50px;"><%= @recipe.name %></h1>
 
-<%= image_tag(@recipe.image_url, :alt => @recipe.name) %>
+    <%= image_tag(@recipe.image_url, :alt => @recipe.name) %>
 
-<h4>Dish Type: <%= @recipe.dish_type %></h4>
-<h4>Difficulty Level: <%= @recipe.difficulty %></h4>
-<h5>Time to Make: <%= @recipe.time %> Minutes</h5>
-<h5>Servings: <%= @recipe.servings %></h5>
-<h5>Vegetarian: <%= @recipe.is_vegetarian %></h5>
+    <p><span style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Dish Type </span><%= @recipe.dish_type %></p>
+    <p><span style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Difficulty Level </span><%= @recipe.difficulty %></p>
+    <p><span style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Time to Make </span><%= @recipe.time %> Minutes</p>
+    <p><span style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Servings </span><%= @recipe.servings %></p>
+    <p><span style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Vegetarian </span><%= @recipe.is_vegetarian %></p>
+</div>
 
-<p><%= sanitize @recipe.summary %></p>
+<h2 style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Overview</h2>
+<%= sanitize @recipe.summary %>
 
-<h2>Ingredients:</h2>
+<h2 style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Ingredients</h2>
 <ol>
     <% @recipe.recipe_ingredients.each do |ing| %>
         <li><%= "#{ing.amt} #{ing.unit} of #{ing.ingredient.name}" %></li>
     <% end %>
 </ol>
 
-Directions:
+<h2 style="font-family: 'Alfa Slab One', cursive; color: #0C5744;">Directions</h2>
 <%= sanitize @recipe.instructions %>
 
 

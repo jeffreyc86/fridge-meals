@@ -1,6 +1,7 @@
-<h1><%= @ingredient.name %></h1>
+<div style="text-align:center">
+<h1 style="font-size: 40px;"><%= @ingredient.name %></h1>
 
-<%= image_tag(@ingredient.image, :alt => @ingredient.name) %>
+<%= image_tag(@ingredient.image, :alt => @ingredient.name, :size => "150x150") %>
 
 <h3><%= "Add #{@ingredient.name} to your fridge" %></h3>
 <%= form_tag user_ingredients_path do %>
@@ -12,4 +13,7 @@
     <%= select_tag :unit, options_for_select(@units) %>
     <%= submit_tag "Add Ingredient" %>
 <% end %>
+<br>
+<%= image_tag("ing.gif", :alt => "i like that", :size => "500x281") %>
 
+</div>

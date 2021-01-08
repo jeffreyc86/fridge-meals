@@ -1,13 +1,16 @@
-<h1>Ingredient Search Results</h1>
+<div style="text-align:center;">
+<h1 style=" font-size: 40px;">Ingredient Search Results</h1>
 
 <% if @ingredients.count == 0 %>
-    <%= "Sorry there are no ingredients by that name." %>
+    <%= image_tag("noresults.gif", :alt => "rss feed") %>
+    <p><%= "Sorry there are no ingredients by that name." %></p>
     <p><%= form_tag ing_results_path, method: :get do %>
         <%= label_tag "Ingredient Name:" %>
         <%= text_field_tag :answer %>
         <%= submit_tag "Search Again" %>
     <% end %></p>
 <% else %>
+    Please Select the Ingredient You'd Like to Add
     <ul>
     <% @ingredients.each do |ing| %>
         <p><%= image_tag(ing.image, :alt => ing.name) %>
@@ -15,3 +18,4 @@
     <% end %>
     </ul>
 <% end %>
+</div>

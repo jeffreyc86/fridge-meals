@@ -1,7 +1,9 @@
-<h1>Recipe Results</h1>
+<div style="text-align:center;">
+<h1 style="font-size:40px;">Recipe Results</h1>
 
 <% if @recipes.count == 0 %>
-    <%= "Sorry there are no recipes with your preferences." %><br>
+    <%= image_tag("noresults.gif", :alt => "rss feed") %>
+    <p><%= "Sorry there are no recipes with your preferences." %></p>
     <p><%= button_to "Search Again", recipes_path, method: :get %></p>
 <% else %>
 <ul>
@@ -14,3 +16,4 @@
     <%= button_to "Search Again", recipes_path, method: :get %>
 </ul>
 <% end %>
+</div>

@@ -4,8 +4,9 @@
 
 
 <% if flash[:errors] %>
+    <%= image_tag("signuperror.gif", :alt => "search") %>
     <% flash[:errors].each do |error| %>
-        <p style="color:red;"><%= error %></p>
+        <p style="color:red; font-family: 'Alfa Slab One', cursive;"><%= error %></p>
     <% end %>
 <% end %>
 
@@ -27,7 +28,8 @@
 
 <div style="text-align: center;">
     
-<h2>Delete Account</h2>
+<h2 style="color:red;">Delete Account</h2>
+<p>For Real Though?</p>
 <%= image_tag("delete.gif", :alt => "rss feed") %>
 <%= button_to "Permanently Delete Account", user_path(@user), method: :delete, confirm: "Are you sure you want to delete your account?"%>
 </div>

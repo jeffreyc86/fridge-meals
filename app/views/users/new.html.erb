@@ -1,16 +1,20 @@
+<div style="text-align:center">
 <% if @current_user %>
-    <h1><%= "You're already logged in #{@current_user.first_name}" %></h1>
+    <h1 style="text-align:center;"><%= "You're already logged in #{@current_user.first_name}" %></h1>
+        <%= image_tag("signuperror.gif", :alt => "search") %>
         <p><%= button_to "Return to Your Page", user_path(@current_user), method: :get %></p>
 <% else %>
 
 <h1>Please Sign Up for Fridge Meals to Start Finding Recipes</h1>
 
 <% if flash[:errors] %>
+    <%= image_tag("signuperror.gif", :alt => "search") %>
     <% flash[:errors].each do |error| %>
-        <p style="color:red;"><%= error %></p>
+        <p style="color:red; font-family: 'Alfa Slab One', cursive;"><%= error %></p>
     <% end %>
 <% end %>
 
+<%= image_tag("signup.gif", :alt => "search") %>
 <%= form_for @user do |f| %>
     <p><%= f.label :first_name %></p>
     <p><%= f.text_field :first_name %></p>
@@ -24,9 +28,12 @@
     <p><%= f.password_field :password_confirmation  %></p>
 
 <p><%=f.submit "Create user" %></p>
+
 <% end%>
 
 <h3>Already Signed Up?</h3>
+<%= image_tag("signup2.gif", :alt => "search") %>
 <%= button_to "Login Here", login_path, method: :get %>
 
 <% end %>
+</div>
