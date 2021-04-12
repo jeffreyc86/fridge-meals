@@ -44,13 +44,13 @@ After clicking on the `Recipes` tab, the user is brought to the main recipes pag
 
 <img src="./demo/recipes.gif" alt="recipes" width="800"/>
 
-After selecting their preferred filters and hitting search, the user is shown recipes that meet their preferences. Clicking on a recipe will bring the user to the recipe's page.
+After selecting their preferred filters and clicking search, the user is shown recipes that meet their preferences. Clicking on a recipe will bring the user to the recipe's page.
 
 <img src="./demo/search.gif" alt="search" width="800"/>
 
 ### Recipes
 
-Each recipes will display cooking information along with an overview of the recipe. At the bottom of a recipe's page, a user may add or remove a recipe from their `favorites`.
+Each recipes will display cooking information along with an overview of the recipe. At the bottom of a recipe's page, a user may add or remove a recipe from their favorites.
 
 <img src="./demo/recipe-page.gif" alt="recipe page" width="800"/>
 
