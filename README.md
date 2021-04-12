@@ -10,7 +10,7 @@ Watch the [Demo](https://www.loom.com/share/3f686e9cacc942d5926fe29d9e084c66)
 
 ## Technologies Used
 
-`Fridge Meals` is built using `Ruby on Rails` and `PostgreSQL`. Styling is done with all custom HTML and CSS. 
+`Fridge Meals` is built using `Ruby on Rails` and `SQLite`. Styling is done with all custom HTML and CSS. 
 
 The app relies on ingredient and recipe information sourced from [Spoonacular](https://spoonacular.com/)'s API, as well as gifs to guide users through the application.
 
