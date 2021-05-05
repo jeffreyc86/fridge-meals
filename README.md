@@ -2,8 +2,6 @@
 
 `Fridge Meals` is an app allowing users to discover recipes based on the ingredients they have available at home. 
 
-Created in partnership with Flatiron School cohort-mate [Conor Murnane](https://github.com/cmur11).
-
 ## Demo
 
 Watch the [Demo](https://www.loom.com/share/3f686e9cacc942d5926fe29d9e084c66)
@@ -76,4 +74,4 @@ Clicking on `Logout` logs the user out and returns them back to the home page.
 
 The [MIT](https://choosealicense.com/licenses/mit/) License
 
-Copyright (C) 2021 - [Jeffrey Chiu](https://github.com/jeffreyc86) and [Conor Murnane](https://github.com/cmur11)
+Copyright (C) 2021 - [Jeffrey Chiu](https://jeffreychiu.dev/)
